@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weddings - RJ Mexican Cuisine</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animations CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar" data-aos="fade-down" data-aos-duration="1000">
+        <div class="nav-container">
+            <div class="logo">RJ MEXICAN</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="private-room.html">Private Room</a></li>
+                <li><a href="weddings.html" class="active">Weddings</a></li>
+                <li><a href="location.html">Location</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header / Hero -->
+    <section class="page-header" data-aos="fade-in" style="padding-bottom: 40px;">
+        <div class="container">
+            <div class="weddings-intro" data-aos="fade-up" data-aos-delay="200">
+                <style>
+                    .weddings-intro {
+                        max-width: 900px;
+                        margin: 0 auto;
+                        text-align: center;
+                        padding: 50px 30px;
+                        background: rgba(255, 255, 255, 0.05); /* Dark Glass */
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 12px;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                        backdrop-filter: blur(10px);
+                    }
+                    .weddings-intro h2 {
+                        font-family: 'Playfair Display', serif;
+                        font-size: 2.5rem;
+                        color: var(--text-light);
+                        margin-bottom: 20px;
+                        position: relative;
+                        display: inline-block;
+                    }
+                    .weddings-intro h2::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 80px;
+                        height: 3px;
+                        background-color: var(--accent-color);
+                    }
+                    .weddings-intro h3 {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 500;
+                        font-size: 1.4rem;
+                        color: var(--accent-color);
+                        margin: 30px 0 15px;
+                    }
+                    .weddings-intro p {
+                        font-size: 1.1rem;
+                        line-height: 1.8;
+                        color: var(--text-muted);
+                        padding: 0 15px;
+                    }
+                    .weddings-contact-box {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 40px;
+                        margin-top: 40px;
+                        padding: 35px 20px;
+                        background-color: rgba(0, 0, 0, 0.3);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 8px;
+                        flex-wrap: wrap;
+                    }
+                    .weddings-contact-box > div {
+                        flex: 1;
+                        min-width: 250px;
+                    }
+                    .weddings-phone i {
+                        margin-right: 10px;
+                        color: var(--accent-color);
+                    }
+                    .weddings-phone {
+                        font-size: 1.8rem;
+                        font-weight: 700;
+                        color: var(--text-light);
+                        text-decoration: none;
+                        display: inline-block;
+                        margin-top: 10px;
+                        transition: color 0.3s ease;
+                    }
+                    .weddings-phone:hover {
+                        color: var(--accent-color);
+                    }
+                    @media (max-width: 768px) {
+                        .weddings-contact-box > div:last-child {
+                            border-left: none !important;
+                            padding-left: 0 !important;
+                            border-top: 1px solid rgba(255, 255, 255, 0.1);
+                            padding-top: 25px;
+                        }
+                    }
+                </style>
+                <h2>WEDDINGS by RJ Mexican Cuisine</h2>
+                <h3>Let RJ Mexican cuisine be part of your big day!</h3>
+                <p>There are a few different ways that you can make the Best Mexican Food in Dallas part of your wedding; from booking our private room for your rehearsal dinner to catering the reception.</p>
+                
+                <div class="weddings-contact-box">
+                    <div>
+                        <p style="font-size: 1.1rem; font-weight: 500; margin-bottom: 5px; color: var(--text-muted);">Speak with our event manager</p>
+                        <a href="tel:2147441420" class="weddings-phone"><i class="fa-solid fa-phone"></i> (214) 744-1420</a>
+                    </div>
+                    <div style="border-left: 1px solid rgba(255, 255, 255, 0.1); padding-left: 30px;">
+                        <p style="font-size: 1.1rem; font-weight: 500; margin-bottom: 15px; color: var(--text-muted);">View our offerings</p>
+                        <a href="catering-menu.html" class="btn btn-primary" style="padding: 12px 25px; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"><i class="fa-solid fa-file-arrow-down" style="margin-right: 8px;"></i> Download Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Gallery Section -->
+    <section class="section" style="padding-top: 40px; padding-bottom: 80px; background-color: transparent;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;" data-aos="fade-up">
+                <style>
+                    .gallery-header h2 {
+                        font-family: 'Playfair Display', serif; 
+                        font-size: 2.2rem; 
+                        color: var(--text-light);
+                        margin-bottom: 15px;
+                        text-transform: uppercase;
+                    }
+                    .gallery-header p {
+                        color: var(--text-muted); 
+                        font-size: 1.15rem;
+                        max-width: 600px;
+                        margin: 0 auto;
+                    }
+                </style>
+                <div class="gallery-header">
+                    <h2>Our Wedding Events</h2>
+                    <p>A glimpse into how we can make your special day perfectly memorable with our exquisite settings and catering.</p>
+                </div>
+            </div>
+            
+            <style>
+                .gallery-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                    gap: 20px;
+                }
+                .gallery-item {
+                    overflow: hidden;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+                    position: relative;
+                    aspect-ratio: 4/3;
+                    cursor: pointer;
+                }
+                .gallery-item img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+                }
+                .gallery-item:hover img {
+                    transform: scale(1.1);
+                }
+                .gallery-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+                    color: white;
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                    display: flex;
+                    align-items: flex-end;
+                    padding: 25px;
+                }
+                .gallery-item:hover .gallery-overlay {
+                    opacity: 1;
+                }
+                .gallery-overlay-content {
+                    transform: translateY(20px);
+                    transition: transform 0.4s ease;
+                }
+                .gallery-item:hover .gallery-overlay-content {
+                    transform: translateY(0);
+                }
+                .gallery-overlay h4 {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.4rem;
+                    margin-bottom: 5px;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                }
+                .gallery-overlay p {
+                    font-size: 0.95rem;
+                    color: #eee;
+                    margin: 0;
+                }
+            </style>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding Setup">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <h4>Elegant Settings</h4>
+                            <p>Beautiful table arrangements</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80" alt="Catering Details">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <h4>Exquisite Catering</h4>
+                            <p>Flawless presentation and taste</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" alt="Wedding Toast">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <h4>Memorable Moments</h4>
+                            <p>Celebrating your love</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1505369686001-a1e6ec438903?auto=format&fit=crop&w=800&q=80" alt="Private Dining Room">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <h4>Private Spaces</h4>
+                            <p>Intimate reception areas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8892ebe9bd?auto=format&fit=crop&w=800&q=80" alt="Mexican Cuisine">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <h4>Authentic Cuisine</h4>
+                            <p>Traditional Mexican flavors</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://images.unsplash.com/photo-1533142266408-db2856262451?auto=format&fit=crop&w=800&q=80" alt="Special Event">
+                    <div class="gallery-overlay">
+                        <div class="gallery-overlay-content">
+                            <h4>Flawless Service</h4>
+                            <p>Attentive staff all evening</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Form Section -->
+    <section class="section" style="padding-top: 20px; padding-bottom: 60px; background-color: transparent;">
+        <div class="container" data-aos="fade-up" data-aos-delay="200">
+            <div style="max-width: 700px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.05); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(10px);">
+                <h2 style="margin-bottom: 30px; font-size: 2rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; text-align: center;">ASK ABOUT CATERING</h2>
+                
+                <div id="weddingFeedback" style="margin-bottom: 20px; font-weight: bold;"></div>
+                <form id="weddingForm" action="#" method="POST" style="font-family: 'Montserrat', sans-serif;">
+                    <style>
+                        .form-group { margin-bottom: 25px; }
+                        .form-label { display: block; margin-bottom: 8px; font-size: 1rem; color: #888; font-weight: 400; }
+                        .form-label-small { font-size: 0.85rem; color: #aaa; margin-left: 5px; }
+                        .form-control { width: 100%; padding: 12px 15px; border: 1px solid #ccc; font-size: 1rem; font-family: inherit; color: #333; border-radius: 2px; }
+                        .form-control:focus { outline: none; border-color: #666; }
+                        .row-flex { display: flex; gap: 20px; flex-wrap: wrap; }
+                        .col-half { flex: 1; min-width: 250px; }
+                        .section-divider { border-bottom: 1px solid #ccc; margin: 40px 0 20px; padding-bottom: 5px; font-size: 1rem; color: #888; }
+                        .submit-btn { background-color: #222; color: white; border: none; padding: 15px 40px; font-size: 1rem; font-weight: 600; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; }
+                        .submit-btn:hover { background-color: #000; }
+                    </style>
+
+                    <div class="form-group">
+                        <label class="form-label">Subject <span class="form-label-small">(required)</span></label>
+                        <input type="text" class="form-control" name="subject" value="Weddings" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <div class="row-flex">
+                            <div class="col-half">
+                                <label class="form-label" style="font-size: 0.9rem;">First Name <span class="form-label-small">(required)</span></label>
+                                <input type="text" class="form-control" name="first_name" required>
+                            </div>
+                            <div class="col-half">
+                                <label class="form-label" style="font-size: 0.9rem;">Last Name <span class="form-label-small">(required)</span></label>
+                                <input type="text" class="form-control" name="last_name" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address <span class="form-label-small">(required)</span></label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Phone Number <span class="form-label-small">(required)</span></label>
+                        <input type="tel" class="form-control" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Company</label>
+                        <input type="text" class="form-control" name="company">
+                    </div>
+
+                    <div class="section-divider">Your Event Details</div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nature of this Event <span class="form-label-small">(required)</span></label>
+                        <label class="form-label" style="font-size: 0.85rem; color: #aaa; margin-top: -5px;">(e.g. Birthday Party or Business Dinner)</label>
+                        <input type="text" class="form-control" name="event_nature" required>
+                    </div>
+
+                    <div class="form-group" style="max-width: 300px;">
+                        <label class="form-label">Budget Per Person</label>
+                        <div style="position: relative;">
+                            <span style="position: absolute; left: 15px; top: 12px; color: #555;">$</span>
+                            <input type="number" class="form-control" name="budget" style="padding-left: 30px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="max-width: 300px;">
+                        <label class="form-label">Event Date <span class="form-label-small">(required)</span></label>
+                        <input type="date" class="form-control" name="event_date" required>
+                    </div>
+
+                    <div class="row-flex">
+                        <div class="col-half">
+                            <div class="form-group">
+                                <label class="form-label">Start Time</label>
+                                <input type="time" class="form-control" name="start_time">
+                            </div>
+                        </div>
+                        <div class="col-half">
+                            <div class="form-group">
+                                <label class="form-label">End Time</label>
+                                <input type="time" class="form-control" name="end_time">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Message <span class="form-label-small">(required)</span></label>
+                        <textarea class="form-control" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 30px;">
+                        <button type="submit" class="submit-btn">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" data-aos="fade-right">
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Application</a></li>
+                        <li><a href="menu.html">Menus</a></li>
+                        <li><a href="reservations.html">Reservations</a></li>
+                        <li><a href="index.html#catering">Catering</a></li>
+                        <li><a href="private-room.html">Private Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up">
+                    <h4>Location</h4>
+                    <p class="mb-2">Historic West End</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=1701+North+Market+St,+Dallas,+TX+75202"
+                        target="_blank" class="location-link">
+                        1701 North Market St.<br>
+                        Dallas, TX 75202
+                    </a>
+                    <p style="margin-top: 15px;"><a href="tel:2147441420" class="location-link">(214) 744-1420</a></p>
+                </div>
+                <div class="footer-col" data-aos="fade-left">
+                    <h4>Hours</h4>
+                    <p style="margin-bottom: 10px;">
+                        <strong>Sunday — Thursday</strong><br>
+                        11am — 10pm
+                    </p>
+                    <p>
+                        <strong>Friday — Saturday</strong><br>
+                        11am — 11pm
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RJ Mexican Cuisine. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

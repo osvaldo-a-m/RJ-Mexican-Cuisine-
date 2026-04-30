@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location - RJ Mexican Cuisine</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animations CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar" data-aos="fade-down" data-aos-duration="1000">
+        <div class="nav-container">
+            <div class="logo">RJ MEXICAN</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="private-room.html">Private Room</a></li>
+                <li><a href="weddings.html">Weddings</a></li>
+                <li><a href="location.html" class="active">Location</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" data-aos="fade-in">
+        <div class="container">
+            <h1 data-aos="zoom-in" data-aos-delay="200">Visit Us</h1>
+            <p data-aos="fade-up" data-aos-delay="400">Located in the Historic West End of Dallas, Texas.</p>
+        </div>
+    </section>
+
+    <!-- Content Placeholder -->
+    <section style="min-height: 400px; padding: 100px 20px;">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
+            
+            <div data-aos="fade-right">
+                <h2 style="color: var(--accent-color); font-family: var(--font-classic); font-size: 2.5rem; margin-bottom: 20px;">RJ Mexican Cuisine</h2>
+                <div style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                    <p><i class="fa-solid fa-location-dot" style="color: var(--accent-color); width: 30px;"></i> <strong>Address:</strong></p>
+                    <p style="margin-left: 30px; margin-bottom: 20px;">1701 North Market St.<br>Dallas, TX 75202</p>
+
+                    <p><i class="fa-solid fa-phone" style="color: var(--accent-color); width: 30px;"></i> <strong>Phone:</strong></p>
+                    <p style="margin-left: 30px; margin-bottom: 20px;"><a href="tel:2147441420">(214) 744-1420</a></p>
+
+                    <p><i class="fa-solid fa-clock" style="color: var(--accent-color); width: 30px;"></i> <strong>Hours:</strong></p>
+                    <p style="margin-left: 30px;">Sunday — Thursday: 11am — 10pm</p>
+                    <p style="margin-left: 30px;">Friday — Saturday: 11am — 11pm</p>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=1701+North+Market+St,+Dallas,+TX+75202" target="_blank" class="btn btn-primary" style="font-size: 1rem;"><i class="fa-solid fa-map"></i> Get Directions</a>
+                </div>
+            </div>
+            
+            <div data-aos="fade-left" style="width: 100%; height: 100%; min-height: 400px; background: #eee; border-radius: 10px; overflow: hidden; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
+                <!-- Minimal map placeholder using an iframe or image (currently using a standard Gmap embed link structure but simplified) -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.2!2d-96.808!3d32.781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDQ2JzUxLjYiTiA5NsKwNDgnMjguOCJX!5e0!3m2!1sen!2sus!4v1" width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" data-aos="fade-right">
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Application</a></li>
+                        <li><a href="menu.html">Menus</a></li>
+                        <li><a href="reservations.html">Reservations</a></li>
+                        <li><a href="index.html#catering">Catering</a></li>
+                        <li><a href="private-room.html">Private Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up">
+                    <h4>Location</h4>
+                    <p class="mb-2">Historic West End</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=1701+North+Market+St,+Dallas,+TX+75202" target="_blank" class="location-link">
+                        1701 North Market St.<br>
+                        Dallas, TX 75202
+                    </a>
+                    <p style="margin-top: 15px;"><a href="tel:2147441420" class="location-link">(214) 744-1420</a></p>
+                </div>
+                <div class="footer-col" data-aos="fade-left">
+                    <h4>Hours</h4>
+                    <p style="margin-bottom: 10px;">
+                        <strong>Sunday — Thursday</strong><br>
+                        11am — 10pm
+                    </p>
+                    <p>
+                        <strong>Friday — Saturday</strong><br>
+                        11am — 11pm
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RJ Mexican Cuisine. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

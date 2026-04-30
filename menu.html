@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - RJ Mexican Cuisine</title>
+    <meta name="description" content="Explore RJ Mexican Cuisine's Lunch and Dinner menus, featuring fresh Tex-Mex flavors, daily specials, and $5 Happy Hour Margaritas Mon-Fri 11am-6pm.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animations CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ===== DAILY SPECIALS TICKER ===== */
+        .specials-ticker {
+            background: linear-gradient(90deg, #7a1f0e, #c94c34, #7a1f0e);
+            color: #fff;
+            padding: 9px 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 999;
+            margin-top: 80px; /* push below fixed navbar */
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ticker-label {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            padding: 0 18px;
+            display: flex;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            z-index: 2;
+            border-right: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .ticker-label i {
+            margin-right: 7px;
+            animation: pulse-star 1.5s infinite;
+        }
+
+        @keyframes pulse-star {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+        }
+
+        .ticker-track {
+            display: flex;
+            animation: ticker-scroll 32s linear infinite;
+            padding-left: 200px;
+            width: max-content;
+        }
+
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            white-space: nowrap;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 0 35px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ticker-day {
+            color: #ffd580;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .ticker-sep {
+            color: rgba(255,255,255,0.4);
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .menu-page-header {
+            padding: 60px 0 50px;
+            text-align: center;
+        }
+
+        .menu-page-header h1 {
+            font-size: 3.2rem;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+        }
+
+        .menu-page-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* ===== HAPPY HOUR BANNER ===== */
+        .happy-hour-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: rgba(201, 76, 52, 0.12);
+            border: 1px solid rgba(201, 76, 52, 0.35);
+            border-radius: 50px;
+            padding: 12px 30px;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        .happy-hour-banner i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            animation: shake 2.5s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 90%, 100% { transform: rotate(0); }
+            92% { transform: rotate(-10deg); }
+            96% { transform: rotate(10deg); }
+        }
+
+        .happy-hour-banner span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .happy-hour-banner strong {
+            color: var(--accent-color);
+        }
+
+        /* ===== MENU TABS ===== */
+        .menu-tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 60px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 60px;
+            padding: 6px;
+            max-width: 340px;
+            margin: 0 auto 60px;
+        }
+
+        .menu-tab-btn {
+            flex: 1;
+            padding: 12px 30px;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+            color: var(--text-muted);
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-color), #af3d28);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(201, 76, 52, 0.4);
+        }
+
+        .menu-tab-btn:not(.active):hover {
+            color: #fff;
+        }
+
+        /* ===== MENU PANELS ===== */
+        .menu-panel {
+            display: none;
+            animation: fadeInPanel 0.4s ease;
+        }
+
+        .menu-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== MENU SECTION HEADING ===== */
+        .menu-section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            margin-top: 55px;
+        }
+
+        .menu-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .menu-section-title h2 {
+            font-family: var(--font-classic);
+            font-size: 1.9rem;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+
+        .menu-section-divider {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(201,76,52,0.4), transparent);
+        }
+
+        /* ===== MENU ITEMS GRID ===== */
+        .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 22px;
+            margin-bottom: 15px;
+        }
+
+        .menu-item-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 22px 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(201,76,52,0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .menu-item-card:hover {
+            border-color: rgba(201,76,52,0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .menu-item-card:hover::before {
+            opacity: 1;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .menu-item-name {
+            font-family: var(--font-classic);
+            font-size: 1.05rem;
+            color: #f0f0f0;
+            line-height: 1.3;
+        }
+
+        .menu-item-price {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            white-space: nowrap;
+            background: rgba(201,76,52,0.12);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(201,76,52,0.2);
+            flex-shrink: 0;
+        }
+
+        .menu-item-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* ===== DRINKS SECTION ===== */
+        .drinks-section {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 30px;
+        }
+
+        .drinks-section .menu-section-title {
+            margin-top: 0;
+        }
+
+        .drink-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            gap: 15px;
+        }
+
+        .drink-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .drink-info {
+            flex: 1;
+        }
+
+        .drink-name {
+            font-family: var(--font-classic);
+            font-size: 1rem;
+            color: #f0f0f0;
+            margin-bottom: 3px;
+        }
+
+        .drink-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .drink-price {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #ffd580;
+            white-space: nowrap;
+        }
+
+        /* ===== FEATURED (Chef's Selections) CARDS ===== */
+        .menu-item-card--featured {
+            border-color: rgba(201,76,52,0.2);
+            background: rgba(201,76,52,0.04);
+        }
+
+        .menu-item-card--featured:hover {
+            border-color: rgba(201,76,52,0.45);
+            background: rgba(201,76,52,0.08);
+        }
+
+        /* ===== BADGE (Signature) ===== */
+        .menu-item-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffd580;
+            background: rgba(255,213,128,0.12);
+            border: 1px solid rgba(255,213,128,0.25);
+            padding: 3px 9px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            align-self: flex-start;
+        }
+
+        .menu-item-badge-subtle {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 3px 9px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            align-self: flex-start;
+        }
+
+        /* ===== ADDON TEXT ===== */
+        em.menu-item-addon {
+            font-style: normal;
+            color: var(--accent-color);
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        /* ===== STEAK SECTION ===== */
+        .steak-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 18px 22px;
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            border-radius: 12px;
+        }
+
+        .menu-item-card--steak {
+            position: relative;
+            border-color: rgba(255,213,128,0.15);
+            background: rgba(255,213,128,0.03);
+            padding-top: 36px;
+        }
+
+        .menu-item-card--steak:hover {
+            border-color: rgba(255,213,128,0.3);
+        }
+
+        .steak-cut-label {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: #ffd580;
+            background: rgba(255,213,128,0.1);
+            border: 1px solid rgba(255,213,128,0.2);
+            padding: 3px 9px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== SOUTH OF THE BORDER NOTES ===== */
+        .sotb-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .sotb-label {
+            font-family: var(--font-classic);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        /* ===== SAUCES STRIP ===== */
+        .sauces-strip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 13px 18px;
+            margin-top: 18px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .sauces-label {
+            font-weight: 700;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+
+        /* ===== FAJITA OPTION TAGS ===== */
+        .menu-item-options {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .option-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        .option-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #ccc;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .option-tag--combo {
+            color: var(--accent-color);
+            background: rgba(201,76,52,0.1);
+            border-color: rgba(201,76,52,0.25);
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .menu-items-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-page-header h1 {
+                font-size: 2.3rem;
+            }
+            .ticker-label {
+                display: none;
+            }
+            .ticker-track {
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar" data-aos="fade-down" data-aos-duration="1000">
+        <div class="nav-container">
+            <div class="logo">RJ MEXICAN</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="private-room.html">Private Room</a></li>
+                <li><a href="weddings.html">Weddings</a></li>
+                <li><a href="location.html">Location</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Daily Specials Ticker (right below navbar) -->
+    <div class="specials-ticker" id="specialsTicker">
+        <div class="ticker-label"><i class="fa-solid fa-star"></i> Daily Specials</div>
+        <div class="ticker-track" id="tickerTrack">
+            <!-- Items duplicated for seamless loop -->
+            <span class="ticker-item"><span class="ticker-day">Mon</span> Shrimp, Beef, Chicken or Fish Tacos &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Tue</span> Beef or Chicken Enchiladas &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Wed</span> Build Your Own Mexican Bowl &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Thu</span> Beef or Chicken Chimichanga &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Fri</span> Beef or Chicken Fajitas &mdash; $9.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Sat</span> Carne Asada Plate &mdash; $10.99</span>
+            <span class="ticker-sep">✦</span>
+            <!-- Duplicate for seamless infinite loop -->
+            <span class="ticker-item"><span class="ticker-day">Mon</span> Shrimp, Beef, Chicken or Fish Tacos &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Tue</span> Beef or Chicken Enchiladas &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Wed</span> Build Your Own Mexican Bowl &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Thu</span> Beef or Chicken Chimichanga &mdash; $8.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Fri</span> Beef or Chicken Fajitas &mdash; $9.99</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><span class="ticker-day">Sat</span> Carne Asada Plate &mdash; $10.99</span>
+            <span class="ticker-sep">✦</span>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="menu-page-header container" data-aos="fade-up">
+        <h1>Our Menu</h1>
+        <p>Imaginative traditional dishes blending Mexico-Texas flavors with authentic Mexican technique.</p>
+    </section>
+
+    <!-- Menu Content -->
+    <section style="padding-top: 0; padding-bottom: 100px;">
+        <div class="container">
+
+            <!-- Happy Hour Banner -->
+            <div class="happy-hour-banner" data-aos="zoom-in">
+                <i class="fa-solid fa-martini-glass-citrus"></i>
+                <span>
+                    <strong>Happy Hour: Mon–Fri | 11am–6pm</strong> &nbsp;·&nbsp; Featuring <strong>$5 Margaritas</strong>
+                </span>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="menu-tabs-wrapper" data-aos="fade-up">
+                <button class="menu-tab-btn active" id="tab-lunch" onclick="switchTab('lunch')">Lunch</button>
+                <button class="menu-tab-btn"        id="tab-dinner" onclick="switchTab('dinner')">Dinner</button>
+            </div>
+
+            <!-- ===================== LUNCH PANEL ===================== -->
+            <div class="menu-panel active" id="panel-lunch">
+
+                <!-- Starters -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Starters</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Guacamole</span>
+                        </div>
+                        <p class="menu-item-desc">Avocado, serrano chiles, onion, cilantro, fresh lime. <em class="menu-item-addon">Add shrimp or crab meat</em></p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Nachos</span>
+                        </div>
+                        <p class="menu-item-desc">Traditional style nachos. <em class="menu-item-addon">Add chicken, beef, shrimp or bacon</em></p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chile Con Queso</span>
+                        </div>
+                        <p class="menu-item-desc">Mexican cheeses, sweet tomatoes, onions, chiles. <em class="menu-item-addon">Add chicken, beef, or shrimp</em></p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">World's Best Chips and Salsa</span>
+                        </div>
+                        <p class="menu-item-desc">Our seasoned chips with homemade salsa.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Shrimp Cocktail</span>
+                        </div>
+                        <p class="menu-item-desc">Shrimp, tomato puree, lime juice, onion, cilantro, hot sauce, avocado, crackers.</p>
+                    </div>
+                </div>
+
+                <!-- Soups & Greens -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Soups &amp; Greens</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Smoked Chicken Salad</span>
+                        </div>
+                        <p class="menu-item-desc">Smoked chicken, pickled onions, tomato, avocado, cucumber, queso fresco, choice of dressing.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Taco Salad</span>
+                        </div>
+                        <p class="menu-item-desc">Crispy flour tortilla, spring mix, monterey jack &amp; cheddar cheeses, tomatoes, choice of chicken or beef.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chicken Tortilla</span>
+                        </div>
+                        <p class="menu-item-desc">Sugar cane-marinated chicken, chicken broth, tomato, avocado, cilantro, tortilla strips.</p>
+                    </div>
+                </div>
+
+                <!-- Enchiladas -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Enchiladas</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chicken</span>
+                        </div>
+                        <p class="menu-item-desc">Shredded chicken, cilantro, spanish onion, serrano chiles, sour cream sauce, queso fresco.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cheese</span>
+                        </div>
+                        <p class="menu-item-desc">Chihuahua cheese, queso fresco, queso sauce.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Picadillo</span>
+                        </div>
+                        <p class="menu-item-desc">Ground chuck, potato, carrot, onion, tomato, serrano, mexican spices, red chile-tomatillo, queso fresco.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Vegetable</span>
+                        </div>
+                        <p class="menu-item-desc">Spanish onions, avocado, squash, bell peppers, olive oil, RJ spice, salsa verde, queso fresco.</p>
+                    </div>
+                </div>
+                <div class="sauces-strip" data-aos="fade-up">
+                    <span class="sauces-label"><i class="fa-solid fa-pepper-hot"></i> House-Made Sauces:</span>
+                    Red Chile Tomatillo &nbsp;&middot;&nbsp; Habanero-Lime Cream &nbsp;&middot;&nbsp; Salsa Verde &nbsp;&middot;&nbsp; Sour Cream Sauce &nbsp;&middot;&nbsp; Queso
+                </div>
+
+                <!-- Mexican Bowls -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Mexican Bowls</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <p class="sotb-note" data-aos="fade-up" style="margin-bottom: 20px;">
+                    Pick your rice, beans, protein, salsa, topped with arugula, pico de gallo and queso fresco
+                </p>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Uno</span>
+                        </div>
+                        <p class="menu-item-desc">Red rice or cilantro habanero white rice.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Dos</span>
+                        </div>
+                        <p class="menu-item-desc">Refried black beans or refried beans.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tres</span>
+                        </div>
+                        <p class="menu-item-desc">Picadillo, shredded beef, fajita steak, chicken tinga, chipotle shrimp or vegetable.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Las Cuatro</span>
+                        </div>
+                        <p class="menu-item-desc">Salsa verde, habanero-lime cream, queso, or sour cream sauce.</p>
+                    </div>
+                </div>
+
+                <!-- Traditional Entrees -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Traditional Entrees</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <p class="sotb-note" data-aos="fade-up" style="margin-bottom: 20px;">
+                    Red Rice, choice of Refried Beans or Refried Black Beans.
+                </p>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Picadillo Chimichanga</span>
+                        </div>
+                        <p class="menu-item-desc">Ground chuck, potato, carrot, onion, tomato, serrano peppers, Oaxaca cheese, topped with queso.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Shrimp Tacos</span>
+                            <span class="menu-item-badge-subtle">2 up</span>
+                        </div>
+                        <p class="menu-item-desc">Lightly blackened baby rock shrimp, smoked gouda, pico de gallo, arugula, avocado chipotle aioli.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Picadillo Tacos</span>
+                            <span class="menu-item-badge-subtle">2 up</span>
+                        </div>
+                        <p class="menu-item-desc">Ground chuck, potato, carrot, onion, tomato, serrano peppers, Mexican spices.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Fish Tacos</span>
+                            <span class="menu-item-badge-subtle">2 up</span>
+                        </div>
+                        <p class="menu-item-desc">Blackened tilapia, mango salsa, red-chile tomatillo, flour tortilla.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Sizzling Fajitas</span>
+                        </div>
+                        <p class="menu-item-desc">Mexican stir-fried vegetables, flour tortillas, traditional set-up.</p>
+                        <div class="menu-item-options">
+                            <span class="option-label">Choose one:</span>
+                            <span class="option-tag">Chicken</span>
+                            <span class="option-tag">Vegetable</span>
+                            <span class="option-tag">Steak</span>
+                            <span class="option-tag">Shrimp</span>
+                            <span class="option-tag">Mushroom</span>
+                            <span class="option-tag option-tag--combo">Combo &mdash; steak, chicken &amp; shrimp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialties -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Specialties</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Grilled Chicken</span>
+                        </div>
+                        <p class="menu-item-desc">Rock shrimp, sweet toasty garlic, chipotle peppers, cajun spices, red rice, saut&eacute;ed vegetables.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tilapia Margarita</span>
+                        </div>
+                        <p class="menu-item-desc">Blackened, pico de gallo, chihuahua cheese, avocado, red rice, saut&eacute;ed vegetables.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Pasta</span>
+                        </div>
+                        <p class="menu-item-desc">Linguini, red chile tomatillo cream sauce, pico de gallo, queso fresco with smoked chicken or rock shrimp.</p>
+                    </div>
+                </div>
+
+                <!-- Handhelds -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Handhelds</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <p class="sotb-note" data-aos="fade-up" style="margin-bottom: 20px;">
+                    Served with French Fries
+                </p>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chicken Avocado "BLT"</span>
+                        </div>
+                        <p class="menu-item-desc">Grilled chicken breast, bacon, rocket, texas tomato, avocado, honey mustard dressing, southern bun.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cheeseburger</span>
+                        </div>
+                        <p class="menu-item-desc">Pan seared, cast iron skillet, chipotle garlic oil, oaxaca cheese, texas tomato, arugula, southern bun.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mushroom Burger</span>
+                        </div>
+                        <p class="menu-item-desc">Pan seared, cast iron skillet, chipotle garlic oil, oaxaca cheese, texas tomato, arugula, mushrooms, southern bun.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Mexican Cheese Steak</span>
+                        </div>
+                        <p class="menu-item-desc">Philly meat, onions, roasted red pepper, cheese.</p>
+                    </div>
+                </div>
+
+                <!-- Lunch Drinks -->
+                <div class="drinks-section" data-aos="fade-up">
+                    <div class="menu-section-title">
+                        <h2><i class="fa-solid fa-martini-glass-citrus" style="font-size:1.3rem; color:var(--accent-color); margin-right:8px;"></i>Margaritas</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Texas Rita</div>
+                            <div class="drink-desc">Silver Tequila, Grand Marnier, fresh lime juice - Rocks or Frozen (Available flavors - Strawberry, Peach, Mango, Raspberry, Pomegranite, Watermelon, Passionfruit, Prickly Pear)</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Beer Rita</div>
+                            <div class="drink-desc">Frozen Texas Margarita served with your choice of Cornitas or Dos XX</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Perfect Margarita</div>
+                            <div class="drink-desc">Premium Tequila Reposado, orange liquer, house made sweet and sour</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Top Shelf Margarita</div>
+                            <div class="drink-desc">Premium Tequila Anejo, orange liquer, house made sweet and sour</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">RJ Rita</div>
+                            <div class="drink-desc">Silver Tequila, orange liqueur, house made sweet and sour</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title" style="margin-top: 40px;">
+                        <h2><i class="fa-solid fa-wine-glass" style="font-size:1.3rem; color:var(--accent-color); margin-right:8px;"></i>Vino</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <h3 style="font-size:1.05rem;color:var(--accent-color);margin-bottom:5px;font-family:var(--font-classic);font-weight:600;">White</h3>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Edna Valley <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Chardonnay, California)</span></div>
+                            <div class="drink-desc">Medium body, good balance of vanilla and fruit</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">J. Lohr <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Chardonnay, California)</span></div>
+                            <div class="drink-desc">Aromas of Necatrines, apples and honey</div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="font-size:1.05rem;color:var(--accent-color);margin-top:25px;margin-bottom:5px;font-family:var(--font-classic);font-weight:600;">Red</h3>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Sterling Vinter's Collection <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Cabernet, California)</span></div>
+                            <div class="drink-desc">Soft floral and herbal flavors, hints of oak and spice</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Skyfall <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Merlot, Washington)</span></div>
+                            <div class="drink-desc">Hints of Plums, Vanilla and cocoa</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">Josh Cellars <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Cabernet, California)</span></div>
+                            <div class="drink-desc">Rich bouquet, hints of cinnamon, oak and fruit</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title" style="margin-top: 40px;">
+                        <h2><i class="fa-solid fa-beer-mug-empty" style="font-size:1.3rem; color:var(--accent-color); margin-right:8px;"></i>Cerveza</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <div class="menu-item-options" style="margin-top: 15px; margin-bottom: 25px;">
+                        <span class="option-tag">Indio</span>
+                        <span class="option-tag">Sol</span>
+                        <span class="option-tag">Pacifico</span>
+                        <span class="option-tag">Tecate</span>
+                        <span class="option-tag">Dos XX Amber</span>
+                        <span class="option-tag">Dos XX Lager</span>
+                        <span class="option-tag">Bohemia</span>
+                        <span class="option-tag">Carta Blanca</span>
+                        <span class="option-tag">Victoria</span>
+                        <span class="option-tag">Shiner Bock</span>
+                        <span class="option-tag">Blue Moon</span>
+                        <span class="option-tag">Coors Light</span>
+                        <span class="option-tag">Miller Light</span>
+                        <span class="option-tag">Lone Star</span>
+                        <span class="option-tag">Stella Artois</span>
+                    </div>
+
+                    <div class="menu-section-title" style="margin-top: 40px;">
+                        <h2><i class="fa-solid fa-glass-water" style="font-size:1.2rem; color:var(--accent-color); margin-right:8px;"></i>Non-Alcoholic Cocktails</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Classic Margarita</div>
+                            <div class="drink-desc">Sweet and sour lime juice, simple syrup</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Watermelon-Rita</div>
+                            <div class="drink-desc">Watermelon pur&eacute;e, fresh lime juice, garnished with Tajin and watermelon wedge</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Raspberry-rita</div>
+                            <div class="drink-desc">Raspberry pur&eacute;e, Fresh raspberries, lime juice, simple syrup, Tajin rim</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Mango-rita</div>
+                            <div class="drink-desc">Mango pur&eacute;e, fresh lime juice, garnished with Tajin &amp; fresh mango slice</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Strawberry-rita</div>
+                            <div class="drink-desc">Fresh muddled strawberries, strawberry pur&eacute;e, fresh lime juice, simple syrup, Tajin rim</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Passion Fruit-Rita</div>
+                            <div class="drink-desc">Passion Fruit pur&eacute;e, fresh lime juice, fresh mix of fruits</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Mojitos</div>
+                            <div class="drink-desc">Fresh mint, lime juice, simple syrup, mojito mix</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">Pi&ntilde;a colada</div>
+                            <div class="drink-desc">Pineapple juice, Pi&ntilde;a colada mix, whipped cream, luxardo cherries</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end #panel-lunch -->
+
+            <!-- ===================== DINNER PANEL ===================== -->
+            <div class="menu-panel" id="panel-dinner">
+
+                <!-- Starters -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Starters</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Nachos</span>
+                        </div>
+                        <p class="menu-item-desc">Traditional style nachos. <em class="menu-item-addon">Add chicken, beef, shrimp or bacon</em></p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Guacamole</span>
+                        </div>
+                        <p class="menu-item-desc">Avocado, serrano chiles, onion, cilantro and fresh lime.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Quesadilla de la Casa</span>
+                        </div>
+                        <p class="menu-item-desc">Fajita chicken, spinach, wild mushrooms, pico de gallo, chihuahua cheese.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chile con Queso</span>
+                        </div>
+                        <p class="menu-item-desc">Mexican cheeses, sweet tomatoes, onion, chiles.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cheese Fries</span>
+                        </div>
+                        <p class="menu-item-desc">Fries smothered with cheese sauce. <em class="menu-item-addon">Choice of beef bacon or ground beef</em></p>
+                    </div>
+                </div>
+
+                <!-- Soups & Salads -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Soups &amp; Salads</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tortilla con Pollo</span>
+                        </div>
+                        <p class="menu-item-desc">Sugar cane marinated chicken, chicken broth, tomato, poblano rajas, avocado, cilantro, tortilla strips.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Ensalada de Carne or de Pollo</span>
+                        </div>
+                        <p class="menu-item-desc">Spring mix, Monterey Jack &amp; cheddar cheeses, tomatoes, red onions, choice of fajita steak or chicken, choice of dressing.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Ensalada de Pollo Ahumado</span>
+                        </div>
+                        <p class="menu-item-desc">Smoked chicken, cactus "nopalitos", pickled onions, tomato, avocado, cucumber, queso fresco, choice of dressing.</p>
+                    </div>
+                </div>
+
+                <!-- Chef's Selections -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Chef's Selections</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Salmon del Mar</span>
+                        </div>
+                        <p class="menu-item-desc">Spinach, wild mushrooms, lump crab, Mexican cheeses, sherry cream, red rice, grilled asparagus.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Ribeye Ranchero</span>
+                        </div>
+                        <p class="menu-item-desc">Avocado, gulf shrimp, chipotle-lime habanero cream, garlic mashed potatoes, saut&eacute;ed vegetables.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Camarones al Mojo de Ajo</span>
+                        </div>
+                        <p class="menu-item-desc">Gulf shrimp, sweet toasty garlic, chipotle chile, lime, cilantro, red rice, saut&eacute;ed vegetables.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="200">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Pollo con Camarones y Chipotle</span>
+                        </div>
+                        <p class="menu-item-desc">Marinated chicken, rock shrimp, sweet toasty garlic, chipotle peppers, cajun spices, red rice, saut&eacute;ed vegetables.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="250">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Twin Lobster Tails</span>
+                            <span class="menu-item-badge">Signature</span>
+                        </div>
+                        <p class="menu-item-desc">Two 6oz cold-water lobster tails, shrimp scampi topping, saut&eacute;ed vegetables, red rice. <em class="menu-item-addon">Add lump crab meat</em></p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="300">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Costilla de Res en Salsa</span>
+                        </div>
+                        <p class="menu-item-desc">Beef ribs, peach-habanero BBQ sauce, potatoes with saut&eacute;ed vegetables.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="350">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Steak &amp; Lobster</span>
+                            <span class="menu-item-badge">Signature</span>
+                        </div>
+                        <p class="menu-item-desc">6oz filet mignon, cold-water lobster tail, gulf shrimp scampi, butter sauce, saut&eacute;ed vegetables, red rice.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--featured" data-aos="fade-up" data-aos-delay="400">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tilapia Margarita</span>
+                        </div>
+                        <p class="menu-item-desc">Blackened tilapia, blackened shrimp, pico de gallo, chihuahua cheese, avocado, red rice, saut&eacute;ed vegetables.</p>
+                    </div>
+                </div>
+
+                <!-- Texas Steaks -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2><i class="fa-solid fa-fire-flame-curved" style="font-size:1.2rem;margin-right:10px;color:var(--accent-color);vertical-align:middle;"></i>Texas Steaks</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="steak-note glass-panel" data-aos="fade-up">
+                    <i class="fa-solid fa-circle-info" style="color:var(--accent-color);margin-right:8px;flex-shrink:0;"></i>
+                    <span>Seasoned with Kosher salt &amp; special cracked pepper, char-grilled to perfection, topped with truffle oil. Served with roasted new potatoes &amp; saut&eacute;ed vegetables.
+                    <strong style="color:var(--accent-color);"> Add Grilled Shrimp or Lump Crab Meat to any steak.</strong></span>
+                </div>
+                <div class="menu-items-grid" style="margin-top:22px;">
+                    <div class="menu-item-card menu-item-card--steak" data-aos="fade-up" data-aos-delay="50">
+                        <div class="steak-cut-label">6 oz</div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Filet Mignon</span>
+                        </div>
+                        <p class="menu-item-desc">The most tender cut!</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--steak" data-aos="fade-up" data-aos-delay="100">
+                        <div class="steak-cut-label">16 oz</div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">NY Strip</span>
+                        </div>
+                        <p class="menu-item-desc">Traditional cut.</p>
+                    </div>
+                    <div class="menu-item-card menu-item-card--steak" data-aos="fade-up" data-aos-delay="150">
+                        <div class="steak-cut-label">14 oz</div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Ribeye</span>
+                        </div>
+                        <p class="menu-item-desc">Our most flavorful steak!</p>
+                    </div>
+                </div>
+
+                <!-- Healthy Options -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2><i class="fa-solid fa-leaf" style="font-size:1.1rem;margin-right:10px;color:#6bbf6b;vertical-align:middle;"></i>Healthy Options</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chimichanga de Vegetables</span>
+                        </div>
+                        <p class="menu-item-desc">Zucchini, squash, bell peppers, Spanish onions, avocado, salsa verde, queso fresco.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Enchiladas de Vegetables</span>
+                        </div>
+                        <p class="menu-item-desc">Squash, Spanish onions, zucchini, bell peppers, olive oil, RJ spice, salsa verde, queso fresco.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Pasta Vegetarian</span>
+                        </div>
+                        <p class="menu-item-desc">Linguini, poblano rajas, zucchini, yellow squash, red pepper, spinach, portobello, garlic butter sauce.</p>
+                    </div>
+                </div>
+
+                <!-- South of the Border -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>South of the Border</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <p class="sotb-note" data-aos="fade-up">Served with red rice and your choice of <strong>refried beans or refried black beans</strong>.</p>
+                <p class="sotb-label" data-aos="fade-up">&mdash; Three Hand-Rolled Enchiladas &mdash;</p>
+                <div class="menu-items-grid" style="margin-top:16px;">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Cheese Enchiladas</span>
+                        </div>
+                        <p class="menu-item-desc">Chihuahua cheese, chile con carne, queso fresco.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Pollo Salsa de Crema Agria</span>
+                        </div>
+                        <p class="menu-item-desc">Shredded chicken, cilantro, Spanish onion, serrano chiles, sour cream sauce, queso fresco.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Picadillo</span>
+                        </div>
+                        <p class="menu-item-desc">Ground chuck, potato, carrot, onion, tomato, serrano peppers, Mexican spices, red chile tomatillo, queso fresco.</p>
+                    </div>
+                </div>
+                <div class="sauces-strip" data-aos="fade-up">
+                    <span class="sauces-label"><i class="fa-solid fa-pepper-hot"></i> House-Made Sauces:</span>
+                    Red Chile Tomatillo &nbsp;&middot;&nbsp; Salsa Verde &nbsp;&middot;&nbsp; Queso &nbsp;&middot;&nbsp; Sour Cream Sauce &nbsp;&middot;&nbsp; Habanero-Lime Cream
+                </div>
+
+                <!-- Traditional Entrees -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Traditional Entrees</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Chimichanga</span>
+                        </div>
+                        <p class="menu-item-desc">Picadillo beef, Oaxaca cheese, topped with queso, pico de gallo.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Sizzling Fajitas</span>
+                        </div>
+                        <p class="menu-item-desc">Mexican stir-fry vegetables, traditional set-up, flour tortillas.</p>
+                        <div class="menu-item-options">
+                            <span class="option-label">Choose one:</span>
+                            <span class="option-tag">Chicken</span>
+                            <span class="option-tag">Vegetable</span>
+                            <span class="option-tag">Shrimp</span>
+                            <span class="option-tag">Steak</span>
+                            <span class="option-tag">Mushroom</span>
+                            <span class="option-tag option-tag--combo">Combo &mdash; steak, chicken &amp; shrimp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tacos -->
+                <div class="menu-section-title" data-aos="fade-right">
+                    <h2>Tacos</h2>
+                    <div class="menu-section-divider"></div>
+                </div>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Tacos de Pescado</span>
+                            <span class="menu-item-badge-subtle">Served 3 up</span>
+                        </div>
+                        <p class="menu-item-desc">Blackened tilapia, poblano rajas, mango salsa, red chile tomatillo, flour tortilla.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Picadillo</span>
+                        </div>
+                        <p class="menu-item-desc">Ground chuck, potato, carrot, onion, tomato, serrano peppers, Mexican spices.</p>
+                    </div>
+                    <div class="menu-item-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Taco de Camarones</span>
+                            <span class="menu-item-badge-subtle">Served 3 up</span>
+                        </div>
+                        <p class="menu-item-desc">Lightly blackened shrimp, smoked gouda, pico de gallo, arugula, avocado, chipotle aioli.</p>
+                    </div>
+                </div>
+
+                <!-- Dinner Drinks -->
+                <div class="drinks-section" data-aos="fade-up">
+                    <div class="menu-section-title">
+                        <h2><i class="fa-solid fa-martini-glass-citrus" style="font-size:1.3rem; color:var(--accent-color); margin-right:8px;"></i>Margaritas</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Texas Rita</div>
+                            <div class="drink-desc">Silver Tequila, Grand Marnier, fresh lime juice - Rocks or Frozen (Available flavors - Strawberry, Peach, Mango, Raspberry, Pomegranite, Watermelon, Passionfruit, Prickly Pear)</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Beer Rita</div>
+                            <div class="drink-desc">Frozen Texas Margarita served with your choice of Cornitas or Dos XX</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Perfect Margarita</div>
+                            <div class="drink-desc">Premium Tequila Reposado, orange liquer, house made sweet and sour</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Top Shelf Margarita</div>
+                            <div class="drink-desc">Premium Tequila Anejo, orange liquer, house made sweet and sour</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">RJ Rita</div>
+                            <div class="drink-desc">Silver Tequila, orange liqueur, house made sweet and sour</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title" style="margin-top: 40px;">
+                        <h2><i class="fa-solid fa-wine-glass" style="font-size:1.3rem; color:var(--accent-color); margin-right:8px;"></i>Vino</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <h3 style="font-size:1.05rem;color:var(--accent-color);margin-bottom:5px;font-family:var(--font-classic);font-weight:600;">White</h3>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Edna Valley <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Chardonnay, California)</span></div>
+                            <div class="drink-desc">Medium body, good balance of vanilla and fruit</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">J. Lohr <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Chardonnay, California)</span></div>
+                            <div class="drink-desc">Aromas of Necatrines, apples and honey</div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="font-size:1.05rem;color:var(--accent-color);margin-top:25px;margin-bottom:5px;font-family:var(--font-classic);font-weight:600;">Red</h3>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Sterling Vinter's Collection <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Cabernet, California)</span></div>
+                            <div class="drink-desc">Soft floral and herbal flavors, hints of oak and spice</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Skyfall <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Merlot, Washington)</span></div>
+                            <div class="drink-desc">Hints of Plums, Vanilla and cocoa</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">Josh Cellars <span style="font-size:0.8rem;color:#aaa;font-weight:normal;font-family:var(--font-main);">(Cabernet, California)</span></div>
+                            <div class="drink-desc">Rich bouquet, hints of cinnamon, oak and fruit</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title" style="margin-top: 40px;">
+                        <h2><i class="fa-solid fa-beer-mug-empty" style="font-size:1.3rem; color:var(--accent-color); margin-right:8px;"></i>Cerveza</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <div class="menu-item-options" style="margin-top: 15px; margin-bottom: 25px;">
+                        <span class="option-tag">Indio</span>
+                        <span class="option-tag">Sol</span>
+                        <span class="option-tag">Pacifico</span>
+                        <span class="option-tag">Tecate</span>
+                        <span class="option-tag">Dos XX Amber</span>
+                        <span class="option-tag">Dos XX Lager</span>
+                        <span class="option-tag">Bohemia</span>
+                        <span class="option-tag">Carta Blanca</span>
+                        <span class="option-tag">Victoria</span>
+                        <span class="option-tag">Shiner Bock</span>
+                        <span class="option-tag">Blue Moon</span>
+                        <span class="option-tag">Coors Light</span>
+                        <span class="option-tag">Miller Light</span>
+                        <span class="option-tag">Lone Star</span>
+                        <span class="option-tag">Stella Artois</span>
+                    </div>
+
+                    <div class="menu-section-title" style="margin-top: 40px;">
+                        <h2><i class="fa-solid fa-glass-water" style="font-size:1.2rem; color:var(--accent-color); margin-right:8px;"></i>Non-Alcoholic Cocktails</h2>
+                        <div class="menu-section-divider"></div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Classic Margarita</div>
+                            <div class="drink-desc">Sweet and sour lime juice, simple syrup</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Watermelon-Rita</div>
+                            <div class="drink-desc">Watermelon pur&eacute;e, fresh lime juice, garnished with Tajin and watermelon wedge</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Raspberry-rita</div>
+                            <div class="drink-desc">Raspberry pur&eacute;e, Fresh raspberries, lime juice, simple syrup, Tajin rim</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Mango-rita</div>
+                            <div class="drink-desc">Mango pur&eacute;e, fresh lime juice, garnished with Tajin &amp; fresh mango slice</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Strawberry-rita</div>
+                            <div class="drink-desc">Fresh muddled strawberries, strawberry pur&eacute;e, fresh lime juice, simple syrup, Tajin rim</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Passion Fruit-Rita</div>
+                            <div class="drink-desc">Passion Fruit pur&eacute;e, fresh lime juice, fresh mix of fruits</div>
+                        </div>
+                    </div>
+                    <div class="drink-item">
+                        <div class="drink-info">
+                            <div class="drink-name">Mojitos</div>
+                            <div class="drink-desc">Fresh mint, lime juice, simple syrup, mojito mix</div>
+                        </div>
+                    </div>
+                    <div class="drink-item" style="border-bottom:none;">
+                        <div class="drink-info">
+                            <div class="drink-name">Pi&ntilde;a colada</div>
+                            <div class="drink-desc">Pineapple juice, Pi&ntilde;a colada mix, whipped cream, luxardo cherries</div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end #panel-dinner -->
+
+        </div><!-- end .container -->
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" data-aos="fade-right">
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Application</a></li>
+                        <li><a href="menu.html">Menus</a></li>
+                        <li><a href="reservations.html">Reservations</a></li>
+                        <li><a href="index.html#catering">Catering</a></li>
+                        <li><a href="private-room.html">Private Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" data-aos="fade-up">
+                    <h4>Location</h4>
+                    <p class="mb-2">Historic West End</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=1701+North+Market+St,+Dallas,+TX+75202" target="_blank" class="location-link">
+                        1701 North Market St.<br>
+                        Dallas, TX 75202
+                    </a>
+                    <p style="margin-top: 15px;"><a href="tel:2147441420" class="location-link">(214) 744-1420</a></p>
+                </div>
+                <div class="footer-col" data-aos="fade-left">
+                    <h4>Hours</h4>
+                    <p style="margin-bottom: 10px;">
+                        <strong>Sunday — Thursday</strong><br>
+                        11am — 10pm
+                    </p>
+                    <p>
+                        <strong>Friday — Saturday</strong><br>
+                        11am — 11pm
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RJ Mexican Cuisine. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Tab switching
+        function switchTab(tab) {
+            document.querySelectorAll('.menu-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            document.getElementById('panel-' + tab).classList.add('active');
+        }
+
+        // Highlight today's special in the ticker
+        (function() {
+            const days = ['sun','mon','tue','wed','thu','fri','sat'];
+            const today = days[new Date().getDay()];
+            document.querySelectorAll('.ticker-day').forEach(el => {
+                if (el.textContent.toLowerCase().startsWith(today)) {
+                    el.style.textDecoration = 'underline';
+                    el.style.fontSize = '0.9rem';
+                    el.parentElement.style.background = 'rgba(255,255,255,0.07)';
+                    el.parentElement.style.borderRadius = '20px';
+                    el.parentElement.style.paddingTop = '4px';
+                    el.parentElement.style.paddingBottom = '4px';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
