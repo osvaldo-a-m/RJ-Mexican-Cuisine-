@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 1. Initialize AOS Animations
     if (typeof AOS !== 'undefined') {
         AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
+            duration: 600,
+            easing: 'ease-out',
             once: true,
-            offset: 50
+            offset: 0,
+            disable: window.innerWidth < 900
         });
     }
 
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Navbar Scroll Effect (Glassmorphism rounded state)
+    // 3. Navbar Scroll Effect & Mobile Menu Toggle
     const navbar = document.querySelector('.navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
@@ -36,6 +37,32 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+    }
+
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
         });
     }
 

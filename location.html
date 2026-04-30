@@ -21,6 +21,9 @@
     <header class="navbar" data-aos="fade-down" data-aos-duration="1000">
         <div class="nav-container">
             <div class="logo">RJ MEXICAN</div>
+            <div class="mobile-menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
@@ -42,7 +45,21 @@
 
     <!-- Content Placeholder -->
     <section style="min-height: 400px; padding: 100px 20px;">
-        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
+        <style>
+            .location-grid {
+                display: grid; 
+                grid-template-columns: 1fr 1fr; 
+                gap: 50px; 
+                align-items: start;
+            }
+            @media (max-width: 900px) {
+                .location-grid {
+                    grid-template-columns: 1fr;
+                    gap: 30px;
+                }
+            }
+        </style>
+        <div class="container location-grid">
             
             <div data-aos="fade-right">
                 <h2 style="color: var(--accent-color); font-family: var(--font-classic); font-size: 2.5rem; margin-bottom: 20px;">RJ Mexican Cuisine</h2>
